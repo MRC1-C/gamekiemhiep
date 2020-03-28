@@ -5,24 +5,24 @@ var game = function()
     this.context = null;
     this.weght = 1500;
     this.hight = 700;
-
     this.kiem = null;
-
     this.bg = null;
-
     var self = this;
-
+    var arr = new Array();
     this.init = function()
     {   
-
+        //khai bao kiem
         this.kiem = new kiem(this);
         this.kiem.init();
-
+        //khai bao bg
         this.bg = new bg(this);
         this.bg.init();   
-        
+        //khai bao nui
         this.nui = new nui(this);
         this.nui.init(); 
+        //khai bao charactor
+        this.charactor = new charactor(this);
+        this.charactor.init();
 
         this.canvas = document.createElement('canvas');
         this.canvas.width = this.weght;
@@ -41,21 +41,62 @@ var game = function()
         self.draw();
         setTimeout(self.loop, 33);
     }
-
     this.listen = function()
     {
-        this.canvas.addEventListener('click', function()
+        window.addEventListener('keydown', function(e)
         {
-            self.kiem.jumb();
+            arr.keys[e.keyCode]=true;
         });
+
+        window.addEventListener('keyup', function(e)
+        {
+            arr.keys[e.keyCode]=null;
+            self.kiem.keyup1();
+            self.charactor.keyup1();
+        });
+    }
+    this.control = function()
+    {
+        //dieu khien kiem
+        if(arr.keys[38] )
+        {
+            this.kiem.up();
+        }
+        if(arr.keys[40])
+        {
+            this.kiem.down();
+        }
+        if(arr.keys[37])
+        {
+            this.kiem.left();
+        }
+        if(arr.keys[39])
+        {
+            this.kiem.right();
+        }
+        //dieu khien charactor
+        if(arr.keys[87] )
+        {
+            this.charactor.up();
+        }
+        if(arr.keys[65])
+        {
+            this.charactor.left();
+        }
+        if(arr.keys[68])
+        {
+            this.charactor.right();
+        }     
     }
 
     this.update = function()
     {
         this.listen();
+        this.control();
         this.bg.update();
         this.nui.update();
         this.kiem.update();
+        this.charactor.update();
         
     }
 
@@ -69,6 +110,7 @@ var game = function()
         this.bg.draw();
         this.nui.draw();
         this.kiem.draw();
+        this.charactor.draw();
     }
 
 }
