@@ -75,7 +75,7 @@ var game = function()
             this.kiem.right();
         }
         //dieu khien charactor
-        if(arr.keys[87] )
+        if(arr.keys[87] && this.charactor.set == true )
         {
             this.charactor.up();
         }

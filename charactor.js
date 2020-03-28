@@ -3,11 +3,11 @@ var charactor = function(game)
     var self = this;
     this.set = false;
     this.game = game;
-    this.x = 130;
-    this.y = 412;
+    this.x = 100;
+    this.y = 50;
     this.image = null;
     this.loaded = false;
-    this.a = 0,4;
+    this.a = 0,8;
 
     this.init = function()
     {
@@ -26,27 +26,33 @@ var charactor = function(game)
 
     this.up = function()
     {        
-        this.y = this.y - 50;
+        this.y = this.y - 200;
     }
     this.left = function()
     {
-        this.x = this.x - this.a;
-        this.a++;
+        this.x = this.x - 30;
     }
     this.right = function()
     {
-        this.x = this.x + this.a;
-        this.a++;
+        this.x = this.x + 30;
     }
     this.update = function()
     {
-        this.y = this.y + this.a;
-        this.a++;
-       // if(this.y = self.kiem.y - 12 && this.x >=self.kiem.x && this.x <= self.kiem.x + 182)
-       // {
-      //      this.a=0;
-      //      this.ser = true;
-      //  }
+        
+        if(this.y <= this.game.kiem.y -130 -12 && this.y >= this.game.kiem.y -130 - 24 && this.x >= this.game.kiem.x -80 && this.x  <= this.game.kiem.x + 182 -80)    
+        {
+            this.set = true;
+            this.a=0;
+            this.y = this.game.kiem.y - 130 -18;
+            this.x = this.game.kiem.x ;
+        }
+        else
+        {
+            this.set = false;
+            this.a= this.a +0.5;
+            this.y = this.y + this.a;
+            
+        }
 
         if(this.y >= 700 - 162)
             this.y = 700 -162;

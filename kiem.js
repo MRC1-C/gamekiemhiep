@@ -7,7 +7,7 @@ var kiem = function(game)
     this.y = 400;
     this.image = null;
     this.loaded = false;
-    this.a = 0,5;
+    this.a = 1;
     this.init = function()
     {
         this.image = new Image();
@@ -20,13 +20,23 @@ var kiem = function(game)
 
     this.keyup1 = function()
     {
-        this.a=0,5;
+        this.a=1;
     }
 
     this.up = function()
-    {        
-        this.y = this.y - this.a;
-        this.a++;
+    {             
+        if(this.game.charactor.set == true)
+        {
+
+            this.a = this.a + 0,9;
+            this.y = this.y - this.a;}
+        else
+        {
+            this.y = this.y - this.a;
+            this.a++;
+        }
+        
+
     }
     this.down = function()
     {
