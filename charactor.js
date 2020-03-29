@@ -26,15 +26,15 @@ var charactor = function(game)
 
     this.up = function()
     {        
-        this.y = this.y - 200;
+        this.y = this.y - 150;
     }
     this.left = function()
     {
-        this.x = this.x - 30;
+        this.x = this.x - 20;
     }
     this.right = function()
     {
-        this.x = this.x + 30;
+        this.x = this.x + 20;
     }
     this.update = function()
     {
@@ -43,8 +43,6 @@ var charactor = function(game)
         {
             this.set = true;
             this.a=0;
-            this.y = this.game.kiem.y - 130 -18;
-            this.x = this.game.kiem.x ;
         }
         else
         {

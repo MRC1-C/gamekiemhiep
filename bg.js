@@ -16,8 +16,6 @@ var bg = function(game)
         this.image.src = 'images/bg.png';
     }
     
-
-
     this.update = function()
     {
         this.bg_x--;
@@ -31,8 +29,10 @@ var bg = function(game)
         {
             return;
         }
+        
         self.game.context.drawImage(this.image, this.bg_x , 0);
         self.game.context.drawImage(this.image, this.bg_x + 1500 , 0);
+
     }
 
 }

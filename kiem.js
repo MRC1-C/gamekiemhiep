@@ -25,33 +25,41 @@ var kiem = function(game)
 
     this.up = function()
     {             
-        if(this.game.charactor.set == true)
-        {
-
-            this.a = this.a + 0,9;
-            this.y = this.y - this.a;}
-        else
-        {
-            this.y = this.y - this.a;
-            this.a++;
-        }
-        
+           this.y = this.y - this.a;
+           if(this.game.charactor.set == true)
+            {
+            this.game.charactor.y = this.game.charactor.y -this.a;
+            }
+            this.a = this.a +1,5;
+     
 
     }
     this.down = function()
     {
         this.y = this.y + this.a;
-        this.a++;
+        if(this.game.charactor.set == true)
+        {
+        this.game.charactor.y = this.game.charactor.y +this.a;
+        }
+        this.a = this.a +1,5;
     }
     this.right = function()
     {
         this.x = this.x + this.a;
-        this.a++;
+        if(this.game.charactor.set == true)
+        {
+        this.game.charactor.x = this.game.charactor.x + this.a;
+        }
+        this.a = this.a +1,5;
     }
     this.left = function()
     {
         this.x = this.x - this.a;
-        this.a++;
+        if(this.game.charactor.set == true)
+        {
+        this.game.charactor.x = this.game.charactor.x -this.a;
+        }
+        this.a = this.a +1,5;
     }
 
 

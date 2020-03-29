@@ -3,17 +3,17 @@ var nui = function(game)
     var self = this;
     this.nui_x = 0;
     this.game = game;
-    this.image = null;
+    this.image1 = null;
     this.loaded = false;
     
     this.init = function()
     {
-        this.image = new Image();
-        this.image.onload = function()
+        this.image1 = new Image();
+        this.image1.onload = function()
         {
             self.loaded = true;
         }
-        this.image.src = 'images/nui.png';
+        this.image1.src = 'images/nui.png';
     }
     
 
@@ -31,8 +31,8 @@ var nui = function(game)
         {
             return;
         }
-        self.game.context.drawImage(this.image, this.nui_x , 700-230);
-        self.game.context.drawImage(this.image, this.nui_x + 1500 , 700-230);
+        self.game.context.drawImage(this.image1, this.nui_x , 700-230);
+        self.game.context.drawImage(this.image1, this.nui_x + 1500 , 700-230);
     }
 
 }

@@ -11,6 +11,9 @@ var game = function()
     var arr = new Array();
     this.init = function()
     {   
+        //khai bao roi
+        this.roi = new roi(this);
+        this.roi.init();
         //khai bao kiem
         this.kiem = new kiem(this);
         this.kiem.init();
@@ -41,6 +44,7 @@ var game = function()
         self.draw();
         setTimeout(self.loop, 33);
     }
+
     this.listen = function()
     {
         window.addEventListener('keydown', function(e)
@@ -55,6 +59,7 @@ var game = function()
             self.charactor.keyup1();
         });
     }
+
     this.control = function()
     {
         //dieu khien kiem
@@ -96,6 +101,7 @@ var game = function()
         this.bg.update();
         this.nui.update();
         this.kiem.update();
+        this.roi.update();
         this.charactor.update();
         
     }
@@ -110,6 +116,7 @@ var game = function()
         this.bg.draw();
         this.nui.draw();
         this.kiem.draw();
+        this.roi.draw();
         this.charactor.draw();
     }
 
