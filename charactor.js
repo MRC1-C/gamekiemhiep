@@ -8,7 +8,7 @@ var charactor = function(game)
     this.image = null;
     this.loaded = false;
     this.a = 0,8;
-
+    this.over = false;
     this.init = function()
     {
         this.image = new Image();
@@ -27,6 +27,7 @@ var charactor = function(game)
     this.up = function()
     {        
         this.y = this.y - 150;
+        this.a=0.4;
     }
     this.left = function()
     {
@@ -53,7 +54,11 @@ var charactor = function(game)
         }
 
         if(this.y >= 700 - 162)
-            this.y = 700 -162;
+            {
+                this.y = 700 -162;
+                this.over = true;
+            }
+
         if(this.y<=0)
         this.y = 0;
         if(this.x >= 1500)

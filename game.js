@@ -7,13 +7,24 @@ var game = function()
     this.hight = 700;
     this.kiem = null;
     this.bg = null;
+    this.charactor = null;
+    this.nui = null;
+    this.roi = null;
     var self = this;
     var arr = new Array();
+    this.chuyenroi = 0;
+    this.chuyenroibool = false;
     this.init = function()
     {   
+        //khaibao gameandscore
+        this.gameandscore = new gameandscore(this);
+        this.gameandscore.init();
         //khai bao roi
         this.roi = new roi(this);
         this.roi.init();
+        //khai bao roi 2
+        this.roi2 = new roi(this);
+        this.roi2.init();
         //khai bao kiem
         this.kiem = new kiem(this);
         this.kiem.init();
@@ -100,10 +111,42 @@ var game = function()
         this.control();
         this.bg.update();
         this.nui.update();
+        if(this.charactor.over == true)
+        {
+            this.gameandscore.update();
+            this.canvas.addEventListener('click',function()
+            {
+                //hoi loi
+                if(self.charactor.over==true)
+                {
+                
+                self.charactor.over = false;
+                self.kiem.x = 100;
+                self.kiem.y = 400;
+                self.charactor.y = 0;
+                self.charactor.x = self.kiem.x;
+                self.charactor.a = 0,4;
+                }
+            });
+        }
+        else
+        {
         this.kiem.update();
         this.roi.update();
+        if(this.chuyenroi == 60)
+        {
+            this.chuyenroibool=true;
+        }
+        else if(this.chuyenroi < 60)
+        {this.chuyenroi++}
+        if(this.chuyenroibool == true)
+        {
+            this.chuyenroi = 70;
+            this.roi2.update();
+        }
         this.charactor.update();
-        
+        }
+
     }
 
     this.clearScreen = function()
@@ -114,10 +157,15 @@ var game = function()
     this.draw = function()
     {
         this.bg.draw();
-        this.nui.draw();
+        this.nui.draw(); 
         this.kiem.draw();
         this.roi.draw();
+        this.roi2.draw();
         this.charactor.draw();
+        if(this.charactor.over == true)
+        {
+        this.gameandscore.draw();
+        }
     }
 
 }
