@@ -13,18 +13,23 @@ var game = function()
     var self = this;
     var arr = new Array();
     this.chuyenroi = 0;
-    this.chuyenroibool = false;
     this.init = function()
     {   
         //khaibao gameandscore
         this.gameandscore = new gameandscore(this);
         this.gameandscore.init();
         //khai bao roi
-        this.roi = new roi(this);
-        this.roi.init();
+        this.roi1 = new roi(this);
+        this.roi1.init();
         //khai bao roi 2
         this.roi2 = new roi(this);
         this.roi2.init();
+        //khai bao roi 3
+        this.roi3 = new roi(this);
+        this.roi3.init();
+        //set x cua roi
+        this.roi2.roi_x = this.roi1.roi_x + 300;
+        this.roi3.roi_x = this.roi2.roi_x + 300;
         //khai bao kiem
         this.kiem = new kiem(this);
         this.kiem.init();
@@ -123,6 +128,9 @@ var game = function()
                 self.charactor.over = false;
                 self.kiem.x = 100;
                 self.kiem.y = 400;
+                self.roi1.roi_x= 1500;
+                self.roi2.roi_x =1500 + 300;
+                self.roi3.roi_x = 1500 + 600;
                 self.charactor.y = 0;
                 self.charactor.x = self.kiem.x;
                 self.charactor.a = 0,4;
@@ -132,18 +140,10 @@ var game = function()
         else
         {
         this.kiem.update();
-        this.roi.update();
-        if(this.chuyenroi == 60)
-        {
-            this.chuyenroibool=true;
-        }
-        else if(this.chuyenroi < 60)
-        {this.chuyenroi++}
-        if(this.chuyenroibool == true)
-        {
-            this.chuyenroi = 70;
-            this.roi2.update();
-        }
+        this.roi1.update();
+
+        this.roi2.update();
+        this.roi3.update();
         this.charactor.update();
         }
 
@@ -159,8 +159,9 @@ var game = function()
         this.bg.draw();
         this.nui.draw(); 
         this.kiem.draw();
-        this.roi.draw();
+        this.roi1.draw();
         this.roi2.draw();
+        this.roi3.draw();
         this.charactor.draw();
         if(this.charactor.over == true)
         {

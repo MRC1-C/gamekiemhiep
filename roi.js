@@ -3,7 +3,7 @@ var roi = function(game)
     var self = this;
     this.roi = false;
     this.roi_x = 1500;
-    this.roi_y = Math.floor(Math.random()  * 101 ) +200;
+    this.roi_y = Math.floor(Math.random()  * 401 ) +100;
     this.game = game;
     this.image1 = null;
     this.image2 = null;
@@ -40,8 +40,9 @@ var roi = function(game)
         this.roi_x=this.roi_x - this.ax;
         if(this.roi_x <= -100 )
         { 
+            this.game.charactor.over = true;
             this.roi_x=1500;
-            this.roi_y = Math.floor(Math.random()  * 301 ) + 100;
+            this.roi_y = Math.floor(Math.random()  * 401 ) + 100;
         }
         if(this.roi_y >= 800)
         {   
@@ -51,7 +52,7 @@ var roi = function(game)
             if(this.time1 == 20)
             {
                 this.roi_x=1500;
-                this.roi_y = Math.floor(Math.random()  * 300) +100;
+                this.roi_y = Math.floor(Math.random()  * 400) +100;
                 this.ax = 9;
                 this.time1 = 0;
             }
